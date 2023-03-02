@@ -1,0 +1,120 @@
+<div fxFill fxLayout="column">
+  <mat-toolbar color="primary">
+    <img class="img-logo-navbar" src="assets/img/logos/horizontal-logo-white.png">
+  </mat-toolbar>
+  <div class="backgroud-div"></div>
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="17px">
+    <div fxFlex="50" style="padding: 34px;">
+      <mat-card class="login-card">
+        <mat-card-header>
+          <mat-card-title>Cadastre-se</mat-card-title>
+          <mat-card-subtitle>Crie agora sua conta.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content style="padding: 16px;">
+          <form class="full-width" [formGroup]="registerForm">
+
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" class="full-width">
+              <div fxLayout="column" fxFlex="50%">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nome</mat-label>
+                  <input type="text" matInput formControlName="firstName">
+                  <mat-error *ngIf="firstName.errors?.required">Nome requerido</mat-error>
+
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxFlex="50%">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Sobrenome</mat-label>
+                  <input type="text" matInput formControlName="lastName">
+                  <mat-error *ngIf="lastName.errors?.required">Sobrenome requerido</mat-error>
+
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" matInput formControlName="email">
+                <mat-error *ngIf="email.errors?.required">Email requerido</mat-error>
+                <mat-error *ngIf="email.errors?.pattern">Email inválido</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxFill fxLayoutAlign="start start">
+              <div>
+                <mat-slide-toggle #toggle33 color="primary">Ver dicas para senha</mat-slide-toggle>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" class="full-width">
+              <div fxLayout="column" fxFlex="50%" fxFill>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <input matInput #password1 required placeholder="Digite a senha" [type]="hide1 ? 'password' : 'text'"
+                    formControlName="password">
+                  <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Esconder senha'"
+                    [attr.aria-pressed]="hide1">
+                    <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-hint align="end" aria-live="polite">
+                    {{password1.value.length}} / 30
+                  </mat-hint>
+                  <mat-error *ngIf="password.errors?.required">Senha requerida</mat-error>
+                </mat-form-field>
+
+                <mat-password-strength class="full-width" #passwordComponent [password]="password1.value">
+                </mat-password-strength>
+
+                <mat-password-strength-info *ngIf="toggle33.checked"
+                  lowerCaseCriteriaMsg="Pelo menos 1 caractere minúsculo"
+                  upperCaseCriteriaMsg="Pelo menos 1 caractere maiúsculo" digitsCriteriaMsg="Pelo menos 1 número"
+                  specialCharsCriteriaMsg="Pelo menos 1 caractere especial"
+                  minCharsCriteriaMsg="No mínimo 8 caractertes"
+                  [passwordComponent]="passwordComponent">
+
+                </mat-password-strength-info>
+              </div>
+
+              <div fxLayout="column" fxFill fxFlex="50%" style="margin-bottom:10%">
+
+                <mat-form-field appearance="outline" class="full-width" color="primary">
+                  <input matInput #password2 placeholder="Confirme a senha" [errorStateMatcher]="matcher"
+                    [type]="hide2 ? 'password' : 'text'" formControlName="passwordConfimation">
+                  <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Esconder senha'"
+                    [attr.aria-pressed]="hide2">
+                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-hint align="end" aria-live="polite">
+                    {{password2.value.length}} / {{password1.value.length}}
+                  </mat-hint>
+                  <mat-error *ngIf="passwordConfimation.errors?.required">Confirmação de senha requerida</mat-error>
+
+                </mat-form-field>
+
+              </div>
+            </div>
+            <br>
+            <div fxLayout="row" fxFill fxLayoutAlign="start start">
+              <mat-checkbox required color="primary" formControlName="term"></mat-checkbox>
+              <mat-label style="margin-left: 5px;"> Aceito os <span class="mat-label-term"
+                  (click)="openTermsDialog()">termos.</span></mat-label>
+            </div>
+
+          </form>
+          <div fxLayout="row" class="full-width">
+            <div fxLayout="column" fxFlex="50%" fxLayoutAlign="start start">
+              <button mat-button (click)="redirectToLogin()"color="primary" style="padding: 0px;">Já possui conta? Entre aqui.</button>
+            </div>
+            <div fxLayout="column" class="full-width" fxLayoutAlign="end end">
+              <button mat-raised-button color="primary" [disabled]="!registerForm.valid"
+                (click)="submit()">Registrar</button>
+            </div>
+
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

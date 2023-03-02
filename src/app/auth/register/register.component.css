@@ -1,0 +1,34 @@
+.toolbarMenu {
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.img-logo-navbar {
+  height: 25px;
+}
+
+.mainToolbar .toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.mainToolbar .toolbar-icon {
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.backgroud-div  {
+  background-image: url("/assets/img/background/background_image_1.jpg");
+  opacity: .4;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-label-term{
+  cursor: pointer;
+  font-weight: 550;
+  color: #1a2c77;
+}

@@ -1,0 +1,53 @@
+<div fxFill fxLayout="column">
+  <mat-toolbar color="primary">
+    <img class="img-logo-navbar" src="assets/img/logos/horizontal-logo-white.png">
+  </mat-toolbar>
+  <div class="backgroud-div"></div>
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="17px">
+    <div fxFlex="50" style="padding: 34px;">
+      <mat-card class="login-card">
+        <mat-card-header>
+          <mat-card-title>Entrar</mat-card-title>
+          <mat-card-subtitle>Se já possui uma conta, entre nela aqui.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content style="padding: 16px;">
+          <form class="full-width" [formGroup]="loginForm">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" matInput formControlName="email">
+                <mat-error *ngIf="email.errors?.required">Email requerido</mat-error>
+                <mat-error *ngIf="email.errors?.pattern">Email inválido</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxFill fxLayoutAlign="center center">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Senha</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <mat-error *ngIf="password.errors?.required">Senha requerida</mat-error>
+                <mat-error *ngIf="password.errors?.minlength">A senha possui no mínimo 8 caracteres</mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder senha'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </form>
+
+          <div fxLayout="row" fxFill fxLayoutAlign="start center">
+            <button mat-button color="default" (click)="redirectToRecoverPassword()">Esqueci a senha</button>
+            |
+            <button mat-button color="primary" (click)="redirectToRegister()">É novo? Cadastre-se</button>
+          </div>
+
+          <div fxLayout="row" fxFill fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="submit()">Entrar</button>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

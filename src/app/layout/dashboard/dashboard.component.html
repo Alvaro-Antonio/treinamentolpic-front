@@ -1,0 +1,30 @@
+<mat-toolbar class="mainToolbar print" color="primary">
+    <mat-icon  class="toolbarMenu">subject</mat-icon>
+    <!-- <img class="img-logo-navbar" src="assets/images/603937.jpg"> -->
+    <span class="toolbar-spacer"></span>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <a style="font-size: medium; margin-right: 16px;">
+        Fulando Ciclano
+      </a>
+  
+      <mat-icon mat-list-icon  style="font-size: 40px; width: 40px; height: 40px;">account_circle
+      </mat-icon>
+      <img  src="assets/images/osama-nabil-astra.jpg"  style="height: 40px;" class="circle-wrapper" />
+  
+      <button mat-icon-button >
+        <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+      </button>
+    </div>
+  
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item >
+        <mat-icon mat-list-icon>account_circle</mat-icon>
+        Perfil
+      </button>
+      <button mat-menu-item >
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        Sair
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
