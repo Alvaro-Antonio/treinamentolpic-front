@@ -4,13 +4,13 @@ import { Observable } from "rxjs";
 
 export interface Service<T> {
 
-  save(obj: T, ...params): Observable<T>;
+  save(obj: T, ...params: any[]): Observable<T>;
 
-  update(id: string, obj: T, ...params): Observable<T>;
+  update(id: string, obj: T, ...params: any[]): Observable<T>;
 
-  delete(id: string, ...params): Observable<T>;
+  delete(id: string, ...params: any[]): Observable<T>;
 
-  get(id: string, ...params): Observable<T>;
+  get(id: string, ...params: any[]): Observable<T>;
 
   //getAllPaged(page: number, pageSize: number, order: string, orderBy:string): Observable<Page<T>>;
 

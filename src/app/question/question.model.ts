@@ -1,7 +1,7 @@
 import { Feedback } from "../feedback/feedback.model";
 import { User } from "../user/user.model";
 
-export class Question{
+export interface Question{
     id: string;
     title: string;
     feedback: Feedback;

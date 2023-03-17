@@ -1,30 +1,72 @@
-<mat-toolbar class="mainToolbar print" color="primary">
-    <mat-icon  class="toolbarMenu">subject</mat-icon>
-    <!-- <img class="img-logo-navbar" src="assets/images/603937.jpg"> -->
-    <span class="toolbar-spacer"></span>
-    <div fxLayout="row" fxLayoutAlign="end center">
-      <a style="font-size: medium; margin-right: 16px;">
-        Fulando Ciclano
-      </a>
-  
-      <mat-icon mat-list-icon  style="font-size: 40px; width: 40px; height: 40px;">account_circle
-      </mat-icon>
-      <img  src="assets/images/osama-nabil-astra.jpg"  style="height: 40px;" class="circle-wrapper" />
-  
-      <button mat-icon-button >
-        <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
-      </button>
-    </div>
-  
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item >
-        <mat-icon mat-list-icon>account_circle</mat-icon>
-        Perfil
-      </button>
-      <button mat-menu-item >
-        <mat-icon mat-list-icon>exit_to_app</mat-icon>
-        Sair
-      </button>
-    </mat-menu>
-  </mat-toolbar>
+<mat-toolbar class="mainToolbar print"  color="secundary">
+  <mat-icon (click)="onToolbarMenuToggle()" class="toolbarMenu" style="color:#FB0066">menu</mat-icon>
+  <img class="img-logo-navbar" src="assets/images/Kurumin.png">
+  <span class="toolbar-spacer"></span>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <a style="font-size: medium; margin-right: 16px; color: #FB0066;">
+      {{fullName}}
+    </a>
 
+    <mat-icon mat-list-icon (click)="onClickProfile()" *ngIf="!hasImage()" style="font-size: 40px; width: 40px; height: 40px; color: #FB0066;">account_circle
+    </mat-icon>
+    <img (click)="onClickProfile()" [src]="image" *ngIf="hasImage()" style="height: 40px;" class="circle-wrapper" />
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+
+  <mat-menu #menu="matMenu" style="color:#FB0066">
+    <button mat-menu-item (click)="onClickProfile()" style="color:#FB0066">
+      <mat-icon mat-list-icon style="color:#FB0066">account_circle</mat-icon>
+      Perfil
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon mat-list-icon>exit_to_app</mat-icon>
+      Sair
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenavContainer" fullscreen >
+  <mat-sidenav mode="side" #sidenav class="sidenav" fxLayout="column" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen"
+    opened color="secundary">
+
+    <mat-list >
+      <mat-list-item class="menu-item" *ngIf="isRoot()" [style]="(selected === 'SIMULATED') ? 'background-color: #FB0066; color: #FFF;' : ''">
+        <button class="menu-item-btn" mat-flat-button routerLink="simulated"
+          [style.background-color]="(selected === 'SIMULATED') ? '#FB0066' : ''">
+          <mat-icon [style.color]="(selected) ==='SIMULATED' ? '#FFF' : ''">insert_chart_outlined</mat-icon>
+          <a class="menu-item-label" [class.hide-label]="!isMenuOpen" [style.color]="(selected) ==='SIMULATED' ? '#FFF' : ''">Simulado</a>
+        </button>
+      </mat-list-item>
+
+      <mat-list-item class="menu-item" *ngIf="isRoot()" [style]="(selected === 'QUESTION') ? 'background-color: #FB0066; color: #FFF;' : ''">
+        <button class="menu-item-btn" mat-flat-button routerLink="question"
+          [style.background-color]="(selected === 'QUESTION') ? '#FB0066' : ''">
+          <mat-icon [style.color]="(selected) ==='QUESTION' ? '#FFF' : ''">insert_chart_outlined</mat-icon>
+          <a class="menu-item-label" [class.hide-label]="!isMenuOpen" [style.color]="(selected) ==='QUESTION' ? '#FFF' : ''">Question</a>
+        </button>
+      </mat-list-item>
+
+      <mat-list-item class="menu-item" *ngIf="isRoot()">
+        <button class="menu-item-btn" mat-flat-button routerLink="help"
+        [style.background-color]="(selected === 'HELP') ? '#e8e9f1' : ''">
+          <mat-icon>live_help</mat-icon>
+          <a class="menu-item-label" [class.hide-label]="!isMenuOpen">Ajuda</a>
+        </button>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content" [class.sidenav-close]="!isMenuOpen">
+    <div fxFlexFill>
+      <mat-card fxLayout="column" class="breadcrumb" fxLayoutAlign="Center start" style="color:#FB0066">
+        <xng-breadcrumb></xng-breadcrumb>
+      </mat-card>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,0 +1,104 @@
+.toolbarMenu {
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.img-logo-navbar {
+  height: 50px;
+}
+
+.mainToolbar .toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.mainToolbar .toolbar-icon {
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.sidenavContainer {
+  margin-top: 64px;
+}
+
+::ng-deep .mat-drawer-inner-container {
+  overflow: hidden!important;
+}
+
+.sidenav {
+  width: 4rem;
+}
+
+.sidenav.menu-close {
+  width: 4rem;
+}
+
+.menu-item-label.hide-label {
+  display: none;
+}
+
+.version.hide-label {
+  display: none!important;
+}
+
+.sidenav.menu-open {
+  width: 15rem
+}
+
+.sidenav .menu-item-btn {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  text-align: left;
+  min-width: 10px;
+  min-height: 10px;
+  color: #FB0066;
+}
+
+.menu-item {
+  border-bottom-width: 1px;
+  border-bottom-style: none;
+  border-bottom-color: #FB0066;
+}
+
+::ng-deep .mat-list-item-content {
+  padding: 0px!important;
+}
+
+::ng-deep .mat-list-base {
+  padding-top: 0px!important;
+}
+
+.sidenav .menu-item-btn:hover {
+  background: #bec1ffb4;
+}
+
+.sidenav .menu-item-btn mat-icon {
+  margin-right: 15px;
+  padding-left: 2px;
+}
+
+.content {
+  margin-left: 10rem;
+  padding: 8px;
+  min-width: 475px!important;
+  overflow: auto;
+}
+
+.content.sidenav-close {
+  margin-left: 5rem!important;
+}
+
+.footer{
+  bottom: 0;
+}
+
+.breadcrumb {
+  margin-bottom: 8px;
+}
+
+.circle-wrapper {
+  height: 100px;
+  circle: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}

@@ -1,11 +1,11 @@
 export class User{
-    id: string;
-    firstname: string;
-    lastname: string;
-    email: string;
-    lastLoginDate: string;
-    profilePicture: string;
-    creationDate: string;
+    id!: string;
+    firstname!: string;
+    lastname!: string;
+    email!: string;
+    lastLoginDate!: string;
+    profilePicture!: string;
+    creationDate!: string;
     
 }
 

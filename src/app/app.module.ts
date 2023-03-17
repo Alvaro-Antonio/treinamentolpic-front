@@ -11,22 +11,19 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { UserComponent } from './user/user.component';
 import { StorageService } from './auth/session/storage.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionComponent,
-    AlternativeComponent,
-    SimulatedComponent,
-    FeedbackComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

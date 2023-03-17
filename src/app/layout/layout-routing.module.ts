@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SimulatedComponent } from '../simulated/simulated.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -13,19 +12,28 @@ const routes: Routes = [
           pathMatch: 'full',
           redirectTo: 'dashboard'
         },
+        {
+          path: 'simulated',
+          loadChildren: () =>
+            import('../simulated/simulated.module').then((m) => m.SimulatedModule),
+          data: {
+            breadcrumb: 'Simulador',
+                  }
+        },
+        {
+          path: 'question',
+          loadChildren: () =>
+            import('../question/question.module').then((m) => m.QuestionModule),
+          data: {
+            breadcrumb: 'Simulador',
+                  },
+          canLoad: [],
+          canActivate: [],
+        },
         
       ],
     },
-    {
-      path: 'simulated',
-      loadChildren: () =>
-        import('../simulated/simulated.module').then((m) => m.SimulatedModule),
-      data: {
-        breadcrumb: 'Simulador',
-              },
-      canLoad: [],
-      canActivate: [],
-    },
+    
   ];
   
   @NgModule({

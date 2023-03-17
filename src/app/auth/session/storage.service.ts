@@ -15,7 +15,7 @@ export class StorageService {
   getLocalUser(): LoggedUser {
     const usr = localStorage.getItem(STORAGE_KEYS.localUser);
     if (usr == null) {
-      return null;
+      return this.user;
     } else {
       return JSON.parse(usr);
     }
@@ -30,10 +30,10 @@ export class StorageService {
     this.user = obj;
   }
 
-  getLocalProfilePicture(): string {
+ /* getLocalProfilePicture(): string {
     return localStorage.getItem(STORAGE_KEYS.localProfilePicture);
   }
-
+*/
   setLocalProfilePicture(profilePicture: string) {
     if (profilePicture == null) {
       localStorage.removeItem(STORAGE_KEYS.localProfilePicture);

@@ -6,6 +6,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { LayoutRoutingModule } from './layout-routing.module';
 import {MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { BreadcrumbModule } from 'xng-breadcrumb';
 
 
 
@@ -20,6 +24,10 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    BreadcrumbModule,
   ]
 })
 export class LayoutModule { }

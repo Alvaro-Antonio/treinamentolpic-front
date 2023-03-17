@@ -9,4 +9,4 @@ import { QuestionComponent } from './question.component';
      
     ],
   })
-  export class SimulatedModule { }
+  export class QuestionModule { }

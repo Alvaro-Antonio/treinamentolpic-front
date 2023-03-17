@@ -1,0 +1,18 @@
+
+<div *ngFor="let questions of questionsWithAlternatives">
+<h2 id="example-radio-group-label">{{ questions.question.title }}</h2>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group" >
+  <mat-radio-button class="example-radio-button" *ngFor="let alternative of questions.alternatives" 
+  [value]="alternative" [disabled]="!isVisibleFeedback()" [checked]="alternative.correct">
+    {{alternative.title}}
+  </mat-radio-button>
+  <div *ngIf="!isVisibleFeedback()">
+      {{questions.question.feedback.feedbackText}}
+  </div>
+</mat-radio-group>
+</div>
+
+<button type="submit" mat-flat-button color="accent" [disabled]="!isVisibleFeedback()">Accent</button>
+

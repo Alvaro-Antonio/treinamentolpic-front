@@ -1,6 +1,6 @@
 export class Feedback{
-    id: string;
-    feedbackText: string;
-    link: string;
+    id: string | undefined;
+    feedbackText: string | undefined;
+    link: string | undefined;
 
 }
