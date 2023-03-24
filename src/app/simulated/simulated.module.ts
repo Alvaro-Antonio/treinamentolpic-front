@@ -5,6 +5,9 @@ import { BuildSimulatedComponent } from './build-simulated/build-simulated.compo
 import { SimulatedRoutingModule } from './simulated-routing.module';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
     declarations: [
@@ -15,7 +18,11 @@ import { MatButtonModule } from '@angular/material/button';
       CommonModule,
       MatRadioModule,
       SimulatedRoutingModule,
-      MatButtonModule
+      MatButtonModule,
+      ReactiveFormsModule,
+      MatCardModule,
+      MatDividerModule
+    
     ],
     providers: [
     

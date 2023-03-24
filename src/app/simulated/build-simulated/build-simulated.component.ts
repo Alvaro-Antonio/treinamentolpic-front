@@ -4,6 +4,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs';
 import { QuestionWithAlternatives } from '../questionWithAlternatives.model';
 import { SimulatedService } from '../simulated.service';
 import { merge, of as observableOf } from 'rxjs';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-build-simulated',
@@ -14,13 +15,21 @@ export class BuildSimulatedComponent implements OnInit, AfterViewInit {
 
   public updateTable = new EventEmitter();
   public visibleFeedback = true;
+
+  public form: FormGroup;
  
 
   constructor(
     private repository : SimulatedService,
     private router : Router,
     private route: ActivatedRoute,
-  ){}
+    private fb: FormBuilder
+  ){
+    this.form = this.fb.group({
+      title: [null, Validators.required],
+      alternative : [null, Validators.required]
+    });
+  }
  
   questionsWithAlternatives : QuestionWithAlternatives []= []
   resultsLength = 0;
@@ -58,6 +67,10 @@ export class BuildSimulatedComponent implements OnInit, AfterViewInit {
         return this.visibleFeedback;
   }
 
+  postarDados() {
+    const dados = this.form.value;
+    console.log(dados);
+  }
 
     
 }

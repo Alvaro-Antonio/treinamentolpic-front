@@ -1,18 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="postarDados()">
+  <div *ngFor="let questions of questionsWithAlternatives">
+    <h2 id="example-radio-group-label" >{{ questions.question.title }}</h2>
+    <input type="hidden" formControlName="title" [value]="questions.question.title">
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" *ngFor="let alternative of questions.alternatives">
+      <mat-radio-button  class="example-radio-button"  formControlName="alternatives"
+        [value]="alternative.id" [disabled]="!isVisibleFeedback()" [checked]="alternative.correct" >
+        <span [style.color]="!isVisibleFeedback() ? 'black' : ''" >{{alternative.title}}</span>
+        
+      </mat-radio-button>
+    </mat-radio-group>
 
-<div *ngFor="let questions of questionsWithAlternatives">
-<h2 id="example-radio-group-label">{{ questions.question.title }}</h2>
-<mat-radio-group
-  aria-labelledby="example-radio-group-label"
-  class="example-radio-group" >
-  <mat-radio-button class="example-radio-button" *ngFor="let alternative of questions.alternatives" 
-  [value]="alternative" [disabled]="!isVisibleFeedback()" [checked]="alternative.correct">
-    {{alternative.title}}
-  </mat-radio-button>
-  <div *ngIf="!isVisibleFeedback()">
-      {{questions.question.feedback.feedbackText}}
+    <mat-card *ngIf="!isVisibleFeedback()" class="mat-card-feedback" >
+      <mat-card-header>
+        <mat-card-title>Segue a Dica</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="primary">
+        <p>
+          {{questions.question.feedback.feedbackText}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a href={{questions.question.feedback.link}}  ><button mat-button >apt upgrade</button></a>
+        
+      </mat-card-actions>
+    </mat-card>
+    <mat-divider></mat-divider>
   </div>
-</mat-radio-group>
-</div>
 
-<button type="submit" mat-flat-button color="accent" [disabled]="!isVisibleFeedback()">Accent</button>
+  <button type="submit" mat-flat-button color="accent" [style.display]="!isVisibleFeedback() ? 'none' : ''">Accent</button>
 
+</form>
