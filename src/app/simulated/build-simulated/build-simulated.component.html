@@ -1,10 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="postarDados()">
-  <div *ngFor="let questions of questionsWithAlternatives">
+  <div *ngFor="let questions of questionsWithAlternatives;let i = index">
     <h2 id="example-radio-group-label" >{{ questions.question.title }}</h2>
-    <input type="hidden" formControlName="title" [value]="questions.question.title">
-    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" *ngFor="let alternative of questions.alternatives">
-      <mat-radio-button  class="example-radio-button"  formControlName="alternatives"
-        [value]="alternative.id" [disabled]="!isVisibleFeedback()" [checked]="alternative.correct" >
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"  formControlName="{{ 'answer' + i }}">
+      <mat-radio-button  class="example-radio-button"  *ngFor="let alternative of questions.alternatives"
+        [value]="convertFormControlInAnswerDTO(questions.question, alternative)" name="alternative" [disabled]="!isVisibleFeedback()" [checked]="!isVisibleFeedback()">
+        
         <span [style.color]="!isVisibleFeedback() ? 'black' : ''" >{{alternative.title}}</span>
         
       </mat-radio-button>
@@ -28,5 +28,9 @@
   </div>
 
   <button type="submit" mat-flat-button color="accent" [style.display]="!isVisibleFeedback() ? 'none' : ''">Accent</button>
+
+  {{form.value | json}}
+
+  
 
 </form>
