@@ -30,6 +30,16 @@ const routes: Routes = [
           canLoad: [],
           canActivate: [],
         },
+        {
+          path: 'user',
+          loadChildren: () =>
+            import('../user/user.module').then((m) => m.UserModule),
+          data: {
+            breadcrumb: 'Usuário',
+                  },
+          canLoad: [],
+          canActivate: [],
+        },
         
       ],
     },

@@ -5,6 +5,7 @@ import { environment } from "src/environments/environment";
 import { StorageService } from "../auth/session/storage.service";
 import { Service } from "../shared/interface/service";
 import { QuestionWithAlternatives } from "./questionWithAlternatives.model";
+import { AnswerDTO, SimulatedAnswersDTO } from "./simulated.model";
 
 @Injectable({
     providedIn: 'root'
@@ -31,7 +32,11 @@ export class SimulatedService {
 
         return this.http.get<any>(this.baseURL, {params: param});
         
-    }   
+    }
+
+    sendAnswers(id: string, answers: AnswerDTO []) : Observable<SimulatedAnswersDTO>{
+        return this.http.post<SimulatedAnswersDTO>(this.baseURL, answers);
+    }
    
 
 }

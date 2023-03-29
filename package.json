@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.1.0",
+    "@angular/animations": "^15.2.4",
     "@angular/cdk": "^15.1.5",
     "@angular/common": "^15.1.0",
     "@angular/compiler": "^15.1.0",
@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
     "ngx-spinner": "^15.0.1",
+    "ngx-toastr": "^16.1.0",
     "node-storage-service": "^1.3.2",
     "rxjs": "~7.8.0",
     "storageservice": "^1.0.2",

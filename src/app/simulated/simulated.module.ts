@@ -8,11 +8,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations: [
       SimulatedComponent,
-      BuildSimulatedComponent
+      BuildSimulatedComponent,
+
     ],
     imports: [
       CommonModule,
@@ -21,7 +25,10 @@ import {MatDividerModule} from '@angular/material/divider';
       MatButtonModule,
       ReactiveFormsModule,
       MatCardModule,
-      MatDividerModule
+      MatDividerModule,
+      MatCheckboxModule,
+      MatListModule,
+      MatIconModule,
     
     ],
     providers: [

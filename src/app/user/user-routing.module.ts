@@ -1,16 +1,17 @@
-import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BuildSimulatedComponent } from "./build-simulated/build-simulated.component";
+import { UserComponent } from './user.component';
 
 
 const routes : Routes = [
     {
         path: '',
-        component: BuildSimulatedComponent,
+        component: UserComponent,
         data: {
             breadcrumb: ''
         }
-    }
+    },
 ];
 
 @NgModule({
@@ -18,4 +19,4 @@ const routes : Routes = [
     exports: [RouterModule],
 })
 
-export class SimulatedRoutingModule{}
+export class UserRoutingModule{}

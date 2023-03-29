@@ -1,36 +1,53 @@
-<form [formGroup]="form" (ngSubmit)="postarDados()">
-  <div *ngFor="let questions of questionsWithAlternatives;let i = index">
-    <h2 id="example-radio-group-label" >{{ questions.question.title }}</h2>
-    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"  formControlName="{{ 'answer' + i }}">
-      <mat-radio-button  class="example-radio-button"  *ngFor="let alternative of questions.alternatives"
-        [value]="convertFormControlInAnswerDTO(questions.question, alternative)" name="alternative" [disabled]="!isVisibleFeedback()" [checked]="!isVisibleFeedback()">
-        
-        <span [style.color]="!isVisibleFeedback() ? 'black' : ''" >{{alternative.title}}</span>
-        
-      </mat-radio-button>
-    </mat-radio-group>
+<div *ngIf="!isVisibleFeedback()">
+  <form [formGroup]="form" (ngSubmit)="postarDados()">
+    <div *ngFor="let questions of questionsWithAlternatives;let i = index">
+      <h2 id="example-radio-group-label">{{ questions.question.title }}</h2>
+      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+        formControlName="{{ 'answer' + i }}">
+        <mat-radio-button class="example-radio-button" *ngFor="let alternative of questions.alternatives"
+          [value]="convertFormControlInAnswerDTO(questions.question, alternative)" name="alternative">
 
-    <mat-card *ngIf="!isVisibleFeedback()" class="mat-card-feedback" >
+          <span [style.color]="!isVisibleFeedback() ? 'black' : ''">{{alternative.title}}</span>
+
+        </mat-radio-button>
+      </mat-radio-group>
+      <mat-divider></mat-divider>
+    </div>
+
+    <button type="submit" mat-flat-button color="accent">Accent</button>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+  </form>
+</div>
+<div *ngIf="isVisibleFeedback()">
+  <div *ngFor="let answer of simulatedFeedback?.answers; let i = index">
+    <section class="example-section">
+      <h1>{{answer.question.title}}</h1>
+
+          <mat-list *ngFor="let alternative of  questionsWithAlternatives[i].alternatives">
+            <mat-icon style="text-align:left center;vertical-align: middle;" [style.color]="iconSimulatedAnswers(alternative, answer.alternativeSelected)[1]" mat-list-icon class="material-symbols-outlined">{{iconSimulatedAnswers(alternative, answer.alternativeSelected)[0]}}</mat-icon>{{alternative.title}}
+          </mat-list>
+
+    </section>
+
+    <mat-card *ngIf="!isVisibleFeedback()" class="mat-card-feedback">
       <mat-card-header>
         <mat-card-title>Segue a Dica</mat-card-title>
       </mat-card-header>
       <mat-card-content class="primary">
         <p>
-          {{questions.question.feedback.feedbackText}}
+          {{answer.question.feedback.feedbackText}}
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <a href={{questions.question.feedback.link}}  ><button mat-button >apt upgrade</button></a>
-        
+        <a href={{answer.question.feedback.link}}><button mat-button>apt upgrade</button></a>
+
       </mat-card-actions>
     </mat-card>
     <mat-divider></mat-divider>
   </div>
-
-  <button type="submit" mat-flat-button color="accent" [style.display]="!isVisibleFeedback() ? 'none' : ''">Accent</button>
-
-  {{form.value | json}}
-
-  
-
-</form>
+</div>

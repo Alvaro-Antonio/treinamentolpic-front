@@ -12,18 +12,22 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { UserComponent } from './user/user.component';
 import { StorageService } from './auth/session/storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { IndicatorsComponent } from './indicators/indicators.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    IndicatorsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

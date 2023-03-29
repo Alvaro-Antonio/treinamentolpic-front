@@ -32,6 +32,8 @@
   width: 4rem;
 }
 
+
+
 .menu-item-label.hide-label {
   display: none;
 }
@@ -101,4 +103,30 @@
   circle: 100px;
   overflow: hidden;
   border-radius: 50%;
+}
+
+.item-list{
+  width: 100%;
+  .mat-button{
+    background-color: #fb006400;
+    width: 100%;
+    height: 3rem;
+    color: #FB0066;
+  }
+}
+
+.menu-item-selected {
+  background-color: #FB0066;
+  .mat-button{
+    background-color: #fb006400;
+    color: white;
+  }
+}
+
+.icon-menu{
+  margin-left: 0;
+}
+.removeLabel{
+  margin-left: -0.2em !important;
+  font-size: 15pt !important;
 }

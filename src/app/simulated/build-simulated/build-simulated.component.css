@@ -3,14 +3,18 @@
     flex-direction: column;
     margin: 15px 0;
     align-items: flex-start;
-  }
+}
   
-  .example-radio-button {
+.example-radio-button {
     margin: 5px;
-  }
+}
 
-  .mat-card-feedback{
+.mat-card-feedback{
     width: 50%;
-  }
+}
+
+.checkedMark :checked{
+  background-color: green;
+}
 
   

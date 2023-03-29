@@ -7,6 +7,6 @@ export interface AnswerDTO {
 }
 
 export interface SimulatedAnswersDTO{
-    answers: AnswerDTO;
+    answers: AnswerDTO [];
     score: number;
 }
