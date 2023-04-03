@@ -72,6 +72,11 @@ export class DashboardComponent implements OnInit {
       relativeTo: this.activatedRoute,
     });
   }
+  redirectHome() {
+    this.router.navigate([`user`], {
+      relativeTo: this.activatedRoute,
+    });
+  }
 
 
 }

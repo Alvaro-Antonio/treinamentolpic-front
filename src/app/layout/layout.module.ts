@@ -10,6 +10,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -28,6 +29,7 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
     MatListModule,
     MatCardModule,
     BreadcrumbModule,
+    MatTooltipModule
   ]
 })
 export class LayoutModule { }

@@ -11,6 +11,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
       MatCheckboxModule,
       MatListModule,
       MatIconModule,
+      MatTooltipModule
     
     ],
     providers: [

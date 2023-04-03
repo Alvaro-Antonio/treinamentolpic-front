@@ -88,7 +88,8 @@ export class BuildSimulatedComponent implements OnInit, AfterViewInit {
   }
 
   async postarDados() {
-    const answers : AnswerDTO [] = [];
+    if(this.form.valid){
+      const answers : AnswerDTO [] = [];
     for (const key in this.form.controls) {
       answers.push(this.form.controls[key].value);
       console.log(answers);
@@ -106,7 +107,8 @@ export class BuildSimulatedComponent implements OnInit, AfterViewInit {
       });
     });
     this.visibleFeedback = true;
-    this.cdr.detectChanges();    
+    this.cdr.detectChanges();
+    }    
   }
 
   async setFeedbackSimulated (simulated : SimulatedAnswersDTO) : Promise<void> {
@@ -129,7 +131,7 @@ export class BuildSimulatedComponent implements OnInit, AfterViewInit {
       const color = 'green';
       return [icon, color] ;
     }else if(alternative.id == alternativeSelected.id){
-      const icon = 'radio_button_checked';
+      const icon = 'close';
       const color = 'red';
       return [icon, color] ;
     }
@@ -138,5 +140,16 @@ export class BuildSimulatedComponent implements OnInit, AfterViewInit {
     return [icon, color] ;
   }
 
-    
+  openLinkFeedbackNewTab(url: string){
+    window.open(url, "_blank")
+  }
+
+  tollTip(alternative : Alternative, selected : Alternative) : string{
+    if(alternative.correct){
+      return 'Alternativa Correta!';
+    }else if(alternative.id == selected.id){
+      return 'Alternativa que Você selecionou!';
+    }
+    return '';
+  }    
 }

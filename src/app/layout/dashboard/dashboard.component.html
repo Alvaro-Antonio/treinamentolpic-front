@@ -1,31 +1,31 @@
-<mat-toolbar class="mainToolbar print"  color="secundary">
-  <mat-icon (click)="onToolbarMenuToggle()" class="toolbarMenu" style="color:#FB0066">menu</mat-icon>
-  <img class="img-logo-navbar" src="assets/images/Kurumin.png">
+<mat-toolbar class="mainToolbar print"  style="background-color: #474A51;">
+  <mat-icon (click)="onToolbarMenuToggle()" class="toolbarMenu" style="color:#90EE90">menu</mat-icon>
+  <img class="img-logo-navbar" src="assets/images/Kurumin.png" (click)="redirectHome()">
   <span class="toolbar-spacer"></span>
   <div style="display: flex; align-items: center;">
-    <a style="font-size: medium; margin-right: 16px; color: #FB0066;">
+    <a style="font-size: medium; margin-right: 16px; color: #90EE90;">
       {{fullName}}
     </a>
 
-    <mat-icon mat-list-icon (click)="onClickProfile()" *ngIf="!hasImage()" style="font-size: 40px; width: 40px; height: 40px; color: #FB0066;">account_circle
+    <mat-icon mat-list-icon (click)="onClickProfile()" *ngIf="!hasImage()" style="font-size: 40px; width: 40px; height: 40px; color: #90EE90;">account_circle
     </mat-icon>
     <img (click)="onClickProfile()" [src]="image" *ngIf="hasImage()" style="height: 40px;" class="circle-wrapper" />
 
     <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon mat-list-icon style="color: #FB0066;">keyboard_arrow_down</mat-icon>
+      <mat-icon mat-list-icon style="color: #90EE90;">keyboard_arrow_down</mat-icon>
     </button>
   </div>
 
-  <mat-menu #menu="matMenu" style="color:#FB0066">
-    <button mat-menu-item (click)="onClickProfile()" style="color:#FB0066;" routerLink="user">
-      <mat-icon mat-list-icon style="color:#FB0066">account_circle</mat-icon>
-      <span style="color: #FB0066;">
+  <mat-menu #menu="matMenu" style="background-color: #474A51;">
+    <button mat-menu-item (click)="onClickProfile()" style="background-color: #474A51;" routerLink="user">
+      <mat-icon mat-list-icon style="color:#90EE90">account_circle</mat-icon>
+      <span style="color: #90EE90;">
         Perfil
       </span>
     </button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon mat-list-icon style="color: #FB0066;">exit_to_app</mat-icon>
-      <span style="color: #FB0066;">
+    <button mat-menu-item (click)="logout()" style="background-color: #474A51;">
+      <mat-icon mat-list-icon style="color: #90EE90;">exit_to_app</mat-icon>
+      <span style="color: #90EE90;">
         Sair
       </span>
     </button>
@@ -34,25 +34,25 @@
 
 <mat-sidenav-container class="sidenavContainer" fullscreen >
   <mat-sidenav mode="side" #sidenav class="sidenav" fxLayout="column" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen"
-    opened color="secundary">
+    opened style="background-color: #4a4c52;">
 
     <mat-list style="display: flex; align-items: start; flex-direction: column;">
       <div class="item-list" [ngClass]="selected === 'SIMULATED' ? 'menu-item-selected': ''">
-        <button  mat-flat-button class="mat-button" routerLink="simulated">
+        <button  mat-flat-button class="mat-button" routerLink="simulated" [matTooltip]="!isMenuOpen ? 'Simulado' : ''">
           <mat-icon class="icon-menu" [ngClass]="!isMenuOpen ? 'removeLabel' : ''">edit_document</mat-icon>
           <a *ngIf="isMenuOpen" class="menu-item-label">Simulado</a>
         </button>
       </div>
 
       <div class="item-list" [ngClass]="selected === 'QUESTION' ? 'menu-item-selected': ''">
-        <button  mat-flat-button class="mat-button" routerLink="question">
+        <button  mat-flat-button class="mat-button" routerLink="question" [matTooltip]="!isMenuOpen ? 'Questões' : ''">
           <mat-icon class="icon-menu" [ngClass]="!isMenuOpen ? 'removeLabel' : ''">insert_chart_outlined</mat-icon>
           <a *ngIf="isMenuOpen" class="menu-item-label">Question</a>
         </button>
       </div>
 
       <div class="item-list" [ngClass]="selected === 'HELP' ? 'menu-item-selected': ''">
-        <button  mat-flat-button class="mat-button" routerLink="help">
+        <button  mat-flat-button class="mat-button" routerLink="help" [matTooltip]="!isMenuOpen ? 'Ajuda' : ''">
           <mat-icon class="icon-menu" [ngClass]="!isMenuOpen ? 'removeLabel' : ''">live_help</mat-icon>
           <a *ngIf="isMenuOpen" class="menu-item-label">Ajuda</a>
         </button>
@@ -63,9 +63,9 @@
 
   <mat-sidenav-content class="content" [class.sidenav-close]="!isMenuOpen">
     <div fxFlexFill>
-      <mat-card fxLayout="column" class="breadcrumb" fxLayoutAlign="Center start" style="color:#FB0066">
+      <!-- <mat-card fxLayout="column" class="breadcrumb" fxLayoutAlign="Center start" style="color:#90EE90">
         <xng-breadcrumb></xng-breadcrumb>
-      </mat-card>
+      </mat-card> -->
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

@@ -1,6 +1,6 @@
-export class Feedback{
-    id: string | undefined;
-    feedbackText: string | undefined;
-    link: string | undefined;
+export interface Feedback{
+    id: string ;
+    feedbackText: string ;
+    link: string ;
 
 }

@@ -2,19 +2,21 @@
   <form [formGroup]="form" (ngSubmit)="postarDados()">
     <div *ngFor="let questions of questionsWithAlternatives;let i = index">
       <h2 id="example-radio-group-label">{{ questions.question.title }}</h2>
-      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+      <mat-radio-group aria-labelledby="example-radio-group-label"  class="example-radio-group"
         formControlName="{{ 'answer' + i }}">
-        <mat-radio-button class="example-radio-button" *ngFor="let alternative of questions.alternatives"
+        <mat-radio-button class="example-radio-button" color="primary"  *ngFor="let alternative of questions.alternatives"
           [value]="convertFormControlInAnswerDTO(questions.question, alternative)" name="alternative">
 
           <span [style.color]="!isVisibleFeedback() ? 'black' : ''">{{alternative.title}}</span>
 
         </mat-radio-button>
       </mat-radio-group>
+      <br>
       <mat-divider></mat-divider>
+      <br><br>
     </div>
 
-    <button type="submit" mat-flat-button color="accent">Accent</button>
+    <button type="submit" mat-flat-button color="warn"  [ngClass]="!form.valid ? '' : 'color'" [disabled]="!form.valid">Enviar</button>
 
 
     <br>
@@ -25,16 +27,20 @@
 </div>
 <div *ngIf="isVisibleFeedback()">
   <div *ngFor="let answer of simulatedFeedback?.answers; let i = index">
-    <section class="example-section">
+    <section class="example-section" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
       <h1>{{answer.question.title}}</h1>
 
           <mat-list *ngFor="let alternative of  questionsWithAlternatives[i].alternatives">
-            <mat-icon style="text-align:left center;vertical-align: middle;" [style.color]="iconSimulatedAnswers(alternative, answer.alternativeSelected)[1]" mat-list-icon class="material-symbols-outlined">{{iconSimulatedAnswers(alternative, answer.alternativeSelected)[0]}}</mat-icon>{{alternative.title}}
+            <mat-icon style="text-align:left center;vertical-align: middle;"             
+            [matTooltip]="tollTip(alternative, answer.alternativeSelected)"
+            [style.color]="iconSimulatedAnswers(alternative, answer.alternativeSelected)[1]" 
+            mat-list-icon class="material-symbols-outlined">{{iconSimulatedAnswers(alternative, answer.alternativeSelected)[0]}}</mat-icon> {{alternative.title}}
           </mat-list>
+         
 
     </section>
 
-    <mat-card *ngIf="!isVisibleFeedback()" class="mat-card-feedback">
+    <mat-card *ngIf="isVisibleFeedback() && !answer.alternativeSelected.correct" class="mat-card-feedback">
       <mat-card-header>
         <mat-card-title>Segue a Dica</mat-card-title>
       </mat-card-header>
@@ -44,10 +50,16 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <a href={{answer.question.feedback.link}}><button mat-button>apt upgrade</button></a>
-
+       <button mat-fab extended (click)="openLinkFeedbackNewTab(answer.question.feedback.link)" ngClass="color" 
+       style="font-size: 0.7rem; padding: 2%;">
+        <mat-icon style="padding: 1% 0% 1% 0%;">upgrade</mat-icon>
+        Dar Uma Olhada!
+      </button>
       </mat-card-actions>
     </mat-card>
+    <br>
     <mat-divider></mat-divider>
+    <br><br>
   </div>
 </div>
+<br><br>
